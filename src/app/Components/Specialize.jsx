@@ -1,5 +1,8 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
+
 export default function Specialize() {
   const services = [
     {
@@ -58,16 +61,32 @@ export default function Specialize() {
           sectors. Our expertise covers a wide range of domains, ensuring
           tailored solutions to meet diverse business needs.
         </p>
-        <div className="grid gap-6 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
+
+        {/* Motion parent grid */}
+        <motion.div
+          className="grid gap-6 md:grid-cols-3 sm:grid-cols-2 grid-cols-1"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.2 } }, 
+          }}
+        >
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-white shadow-md rounded-md p-6 text-left hover:shadow-lg transition"
+              variants={{
+                hidden: { opacity: 0, y: 30 }, 
+                visible: { opacity: 1, y: 0 }, 
+              }}
+              transition={{ duration: 0.6 }}
             >
               <div className="text-3xl mb-4">
                 <Image
                   src={service.icon}
-                  alt={`Client logo ${index + 1}`}
+                  alt={service.title}
                   width={40}
                   height={40}
                   className="object-contain"
@@ -75,9 +94,9 @@ export default function Specialize() {
               </div>
               <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
               <p className="text-gray-600 text-sm">{service.desc}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

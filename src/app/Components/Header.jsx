@@ -83,8 +83,8 @@ export default function HeroSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: i * 0.2 }}
           >
-            <h1 className="text-primary font-bold text-4xl">
-              <CountUp end={item.number} duration={2} />
+            <h1 className="text-primary font-bold text-6xl">
+              <CountUp end={item.number} duration={5} />
             </h1>
             <p className="text-gray-600">{item.label}</p>
           </motion.div>

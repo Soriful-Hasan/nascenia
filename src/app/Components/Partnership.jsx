@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function Partnership() {
   const partnershipLogo = [
@@ -16,12 +18,15 @@ export default function Partnership() {
             Partnerships & Certifications
           </h1>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-4 ">
+        <motion.div
+          initial={{ y: -100, opacity: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1 }}
+          className="grid grid-cols-1 lg:grid-cols-4 "
+        >
           {partnershipLogo.map((logo, index) => (
-            <div
-              key={index}
-              className=" h-40 flex items-center justify-center"
-            >
+            <div key={index} className=" h-40 flex items-center justify-center">
               <Image
                 src={logo.icon}
                 alt={logo.title}
@@ -31,7 +36,7 @@ export default function Partnership() {
               />
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

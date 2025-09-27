@@ -1,12 +1,20 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function ContactSection() {
   return (
     <section className="bg-black py-16">
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         {/* Left Side */}
-        <div className="text-white">
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1 }}
+          className="text-white"
+        >
           <h2 className="text-3xl font-bold mb-6">Let's Make Things Happen!</h2>
           <img
             src="/teamworking.png"
@@ -29,10 +37,16 @@ export default function ContactSection() {
               <p className="text-sm text-gray-400">COO, Deshit-BD</p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Side - Contact Form */}
-        <div className="bg-white rounded-2xl shadow-lg p-8">
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1 }}
+          className="bg-white rounded-2xl shadow-lg p-8"
+        >
           <h3 className="text-xl font-semibold mb-6 text-center">Contact Us</h3>
           <form className="space-y-4">
             <input
@@ -65,7 +79,7 @@ export default function ContactSection() {
               We will contact you after your query submission.
             </p>
           </form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

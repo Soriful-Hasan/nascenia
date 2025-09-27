@@ -30,9 +30,9 @@ export default function () {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2 }}
-        className="max-w-6xl mx-auto  px-4"
+        className="max-w-7xl mx-auto  "
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
           {services.map((service, index) => (
             <div
               key={index}
