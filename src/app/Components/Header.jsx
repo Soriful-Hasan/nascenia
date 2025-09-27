@@ -1,9 +1,10 @@
-'use client'
+"use client";
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import { useState } from "react";
 import Lottie from "lottie-react";
 import animationData from "../../../public/lotte.json";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 export default function HeroSection() {
   const stats = [
@@ -16,10 +17,27 @@ export default function HeroSection() {
   return (
     <div className="w-full min-h-[90vh] flex flex-col justify-between overflow-hidden">
       {/* Hero Section */}
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 px-6 lg:px-16 items-center flex-1">
-        {/* Left Text */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 px-6 lg:px-12 items-center flex-1">
+        {/* Left Image */}
         <motion.div
-          className="space-y-6 text-center lg:text-left"
+          className="flex justify-center lg:justify-start"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <div>
+            <Lottie
+              animationData={animationData}
+              loop={true}
+              autoPlay={true}
+              style={{ width: 400, height: 400 }}
+            />
+          </div>
+        </motion.div>
+
+        {/* Right Text */}
+        <motion.div
+          className="space-y-6 text-center lg:text-left flex flex-col justify-center lg:pl-8"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -42,36 +60,21 @@ export default function HeroSection() {
             software company, we create top-notch custom software that meets our
             client’s requirements.
           </motion.p>
-          <motion.button
-            className="border-2 border-primary px-6 py-3 hover:bg-primary hover:text-white rounded-xl transition"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Our Services
-          </motion.button>
-        </motion.div>
-
-        {/* Right Image */}
-        <motion.div
-          className="flex justify-center lg:justify-end"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          <div>
-            <Lottie
-              animationData={animationData}
-              loop={true}
-              autoPlay={true}
-              style={{ width: 400, height: 400 }}
-            />
+          <div className="flex justify-center lg:justify-start">
+            <motion.button
+              className="border-2 flex items-center gap-2 cursor-pointer border-gray-700 hover:border-primary px-6 py-3 hover:bg-primary hover:text-white rounded-xl transition"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Our Services <MdKeyboardDoubleArrowRight />
+            </motion.button>
           </div>
         </motion.div>
       </div>
 
       {/* Stats Section */}
       <motion.div
-        className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 bg-gray-100 py-12 gap-8 text-center"
+        className="grid mt-10 lg:mt-0 grid-cols-2 md:grid-cols-2 lg:grid-cols-4 bg-gray-100 py-12 gap-8 text-center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.3 }}

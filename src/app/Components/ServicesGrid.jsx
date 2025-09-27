@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function ServicesGrid() {
   const services = [
@@ -42,7 +43,13 @@ export default function ServicesGrid() {
     <section className="bg-gray-50 py-16">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
-        <div className="md:flex md:justify-between md:items-start mb-10">
+        <motion.div
+          className="md:flex md:justify-between md:items-start mb-10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 className="text-xl md:text-4xl font-bold text-black max-w-md">
             Custom Enterprise <br /> Software Development Services
           </h2>
@@ -50,17 +57,31 @@ export default function ServicesGrid() {
             We prioritize cultivating lasting business partnerships as your
             trusted software development partner
           </p>
-        </div>
+        </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.2 } },
+          }}
+        >
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 p-6 group"
+              variants={{
+                hidden: { opacity: 0, y: 40, scale: 0.95 },
+                visible: { opacity: 1, y: 0, scale: 1 },
+              }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               {/* Icon */}
-              <div className="w-14 h-14 flex items-center justify-center   mb-4">
+              <div className="w-14 h-14 flex items-center justify-center mb-4">
                 <Image
                   src={service.icon}
                   alt={service.title}
@@ -81,9 +102,9 @@ export default function ServicesGrid() {
               <div className="flex items-center text-black text-xl group-hover:translate-x-2 transition-transform duration-300">
                 →
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

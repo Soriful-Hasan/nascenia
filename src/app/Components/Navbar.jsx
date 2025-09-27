@@ -27,7 +27,8 @@ export default function Navbar() {
             Home
           </a>
         </li>
-        <li className="relative group">
+
+        <li className="relative group ">
           <button className="flex items-center space-x-1 hover:text-orange-500">
             <span>Services</span>
             <svg
@@ -53,6 +54,68 @@ export default function Navbar() {
             <li>
               <a href="#" className="block px-4 py-2 hover:bg-gray-100">
                 Service 2
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li className="relative group ">
+          <button className="flex items-center space-x-1 hover:text-orange-500">
+            <span>About</span>
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+          <ul className="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-lg rounded-md w-40">
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                About 1
+              </a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                About 2
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li className="relative group ">
+          <button className="flex items-center space-x-1 hover:text-orange-500">
+            <span>Blog</span>
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+          <ul className="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-lg rounded-md w-40">
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                Blog 1
+              </a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                Blog 2
               </a>
             </li>
           </ul>
