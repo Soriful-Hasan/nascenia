@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function AboutUs() {
   const features = [
@@ -32,9 +34,14 @@ export default function AboutUs() {
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         {/* Top Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Left Content */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1 }}
+          >
             <h2 className="text-3xl font-bold text-black mb-4">About Us</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               Nascenia is one of the best software companies in Bangladesh. With
@@ -51,10 +58,16 @@ export default function AboutUs() {
               pride in transforming ideas into robust, scalable solutions that
               drive growth and success.
             </p>
-          </div>
+          </motion.div>
 
           {/* Right Image */}
-          <div className="flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1 }}
+            className="flex justify-center"
+          >
             <Image
               src="/team.png"
               alt="About Nascenia Team"
@@ -62,27 +75,39 @@ export default function AboutUs() {
               height={400}
               className="rounded-lg shadow-md"
             />
-          </div>
+          </motion.div>
         </div>
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
           {features.map((feature, index) => (
             <div key={index} className="flex items-start space-x-4">
-              <div className="w-12 h-12   flex items-center justify-center rounded">
+              <motion.div
+                initial={{ opacity: 0, x: -100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1 }}
+                className="w-12 h-12 flex items-center justify-center rounded"
+              >
                 <Image
                   src={feature.icon}
                   alt={feature.title}
                   width={40}
                   height={40}
                 />
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1 }}
+                className="flex-1"
+              >
                 <h3 className="text-lg font-semibold text-black">
                   {feature.title}
                 </h3>
                 <p className="text-gray-600 text-sm">{feature.description}</p>
-              </div>
+              </motion.div>
             </div>
           ))}
         </div>

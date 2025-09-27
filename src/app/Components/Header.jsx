@@ -1,10 +1,18 @@
-"use client";
-import React from "react";
+'use client'
 import { motion } from "framer-motion";
+import CountUp from "react-countup";
+import { useState } from "react";
 import Lottie from "lottie-react";
 import animationData from "../../../public/lotte.json";
 
-export default function Header() {
+export default function HeroSection() {
+  const stats = [
+    { number: 14, label: "Years of Experience" },
+    { number: 175, label: "Delivered Projects" },
+    { number: 22, label: "Countries Served" },
+    { number: 50, label: "Developers" },
+  ];
+
   return (
     <div className="w-full min-h-[90vh] flex flex-col justify-between overflow-hidden">
       {/* Hero Section */}
@@ -68,19 +76,16 @@ export default function Header() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.3 }}
       >
-        {[
-          { number: "14", label: "Years of Experience" },
-          { number: "175", label: "Delivered Projects" },
-          { number: "22", label: "Countries Served" },
-          { number: "50", label: "Developers" },
-        ].map((item, i) => (
+        {stats.map((item, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: i * 0.2 }}
           >
-            <h1 className="text-primary font-bold text-4xl">{item.number}</h1>
+            <h1 className="text-primary font-bold text-4xl">
+              <CountUp end={item.number} duration={2} />
+            </h1>
             <p className="text-gray-600">{item.label}</p>
           </motion.div>
         ))}

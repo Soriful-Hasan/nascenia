@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function () {
   const services = [
@@ -24,29 +26,54 @@ export default function () {
   ];
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-6xl mx-auto  px-4">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+        className="max-w-6xl mx-auto  px-4"
+      >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div
               key={index}
               className="border-1 border-gray-300  rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300 p-6 text-center"
             >
-              <div className="flex items-center justify-center ">
+              <motion.div
+                initial={{ y: -50, opacity: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="flex items-center justify-center "
+              >
                 <Image
                   src={service.icon}
                   alt={service.title}
                   width={60}
                   height={60}
                 />
-              </div>
-              <h3 className="text-xl font-semibold py-6 mb-3">{service.title}</h3>
-              <p className="text-gray-600 tracking-wider  text-sm leading-relaxed">
+              </motion.div>
+              <motion.h3
+                initial={{ y: -50, opacity: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="text-xl font-semibold py-6 mb-3"
+              >
+                {service.title}
+              </motion.h3>
+              <motion.p
+                initial={{ y: -50, opacity: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="text-gray-600 tracking-wider  text-sm leading-relaxed"
+              >
                 {service.description}
-              </p>
+              </motion.p>
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
