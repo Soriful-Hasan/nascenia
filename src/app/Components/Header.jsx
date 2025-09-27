@@ -17,27 +17,10 @@ export default function HeroSection() {
   return (
     <div className="w-full min-h-[90vh] flex flex-col justify-between overflow-hidden">
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 px-6 lg:px-12 items-center flex-1">
-        {/* Left Image */}
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 px-6 lg:px-16 items-center flex-1">
+        {/* Left Text */}
         <motion.div
-          className="flex justify-center lg:justify-start"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          <div>
-            <Lottie
-              animationData={animationData}
-              loop={true}
-              autoPlay={true}
-              style={{ width: 400, height: 400 }}
-            />
-          </div>
-        </motion.div>
-
-        {/* Right Text */}
-        <motion.div
-          className="space-y-6 text-center lg:text-left flex flex-col justify-center lg:pl-8"
+          className="space-y-6 text-center lg:text-left"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -60,7 +43,7 @@ export default function HeroSection() {
             software company, we create top-notch custom software that meets our
             client’s requirements.
           </motion.p>
-          <div className="flex justify-center lg:justify-start">
+          <div className="place-items-center lg:place-items-start">
             <motion.button
               className="border-2 flex items-center gap-2 cursor-pointer border-gray-700 hover:border-primary px-6 py-3 hover:bg-primary hover:text-white rounded-xl transition"
               whileHover={{ scale: 1.1 }}
@@ -70,11 +53,28 @@ export default function HeroSection() {
             </motion.button>
           </div>
         </motion.div>
+
+        {/* Right Image */}
+        <motion.div
+          className="flex justify-center lg:justify-end"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <div>
+            <Lottie
+              animationData={animationData}
+              loop={true}
+              autoPlay={true}
+              style={{ width: 400, height: 400 }}
+            />
+          </div>
+        </motion.div>
       </div>
 
       {/* Stats Section */}
       <motion.div
-        className="grid mt-10 lg:mt-0 grid-cols-2 md:grid-cols-2 lg:grid-cols-4 bg-gray-100 py-12 gap-8 text-center"
+        className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 bg-gray-100 py-12 gap-8 text-center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.3 }}
