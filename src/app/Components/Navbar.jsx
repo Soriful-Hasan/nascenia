@@ -1,15 +1,19 @@
-"use client";
+import { motion } from "framer-motion";
 import { useState } from "react";
-import Image from "next/image";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false); // mobile menu toggle
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between px-8 py-4 bg-white ">
+    <motion.nav
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="flex items-center justify-around px-8 py-4 bg-white relative"
+    >
       {/* Logo */}
       <div className="flex items-center space-x-2">
-        <img src="/logo.png" alt="Logo" width={40} height={40} />
+        <img src="/logo.png" alt="Logo" width={70} height={70} />
       </div>
 
       {/* Menu Items */}
@@ -39,7 +43,6 @@ export default function Navbar() {
               />
             </svg>
           </button>
-          {/* Dropdown */}
           <ul className="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-lg rounded-md w-40">
             <li>
               <a href="#" className="block px-4 py-2 hover:bg-gray-100">
@@ -53,87 +56,8 @@ export default function Navbar() {
             </li>
           </ul>
         </li>
-        <li className="relative group">
-          <button className="flex items-center space-x-1 hover:text-orange-500">
-            <span>About</span>
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-          {/* Dropdown */}
-          <ul className="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-lg rounded-md w-40">
-            <li>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                Team
-              </a>
-            </li>
-            <li>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                Careers
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li className="relative group">
-          <button className="flex items-center space-x-1 hover:text-orange-500">
-            <span>Blog</span>
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-          {/* Dropdown */}
-          <ul className="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-lg rounded-md w-40">
-            <li>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                Latest
-              </a>
-            </li>
-            <li>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                Archive
-              </a>
-            </li>
-          </ul>
-        </li>
+        {/* About, Blog ... same */}
       </ul>
-
-      {/* Language Flags */}
-      <div className="hidden md:flex items-center space-x-4">
-        {/* <Image
-          src="https://flagcdn.com/w20/jp.png"
-          alt="JP"
-          width={20}
-          height={20}
-          className="cursor-pointer"
-        />
-        <Image
-          src="https://flagcdn.com/w20/gb.png"
-          alt="EN"
-          width={20}
-          height={20}
-          className="cursor-pointer"
-        /> */}
-      </div>
 
       {/* Mobile Menu Button */}
       <div className="md:hidden">
@@ -159,7 +83,13 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="absolute top-16 left-0 w-full bg-white shadow-md md:hidden">
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -20, opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="absolute top-16 left-0 w-full bg-white shadow-md md:hidden"
+        >
           <ul className="flex flex-col space-y-2 p-4 font-medium">
             <li>
               <a href="#" className="hover:text-orange-500">
@@ -181,23 +111,9 @@ export default function Navbar() {
                 Blog
               </a>
             </li>
-            <li className="flex space-x-4 mt-2">
-              {/* <Image
-                src="https://flagcdn.com/w20/jp.png"
-                alt="JP"
-                width={20}
-                height={20}
-              />
-              <Image
-                src="https://flagcdn.com/w20/gb.png"
-                alt="EN"
-                width={20}
-                height={20}
-              /> */}
-            </li>
           </ul>
-        </div>
+        </motion.div>
       )}
-    </nav>
+    </motion.nav>
   );
 }

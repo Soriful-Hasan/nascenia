@@ -13,7 +13,7 @@ import { FaPhoneAlt, FaMapMarkerAlt, FaHandshake } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="bg-white border-t py-12">
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
         {/* Left Section */}
         <div>
           <h3 className="font-semibold text-lg mb-4">
@@ -31,13 +31,13 @@ export default function Footer() {
               <FaHandshake /> Get Estimate
             </li>
           </ul>
-          <div className="flex gap-4 mt-4 text-gray-700 text-xl">
-            <FaFacebookF />
-            <FaXTwitter />
-            <FaYoutube />
-            <FaLinkedinIn />
-            <FaDribbble />
-            <FaPinterestP />
+          <div className="flex gap-4 mt-4 text-gray-700 text-xl ">
+            <FaFacebookF className="cursor-pointer" />
+            <FaXTwitter className="cursor-pointer" />
+            <FaYoutube className="cursor-pointer" />
+            <FaLinkedinIn className="cursor-pointer" />
+            <FaDribbble className="cursor-pointer" />
+            <FaPinterestP className="cursor-pointer" />
           </div>
         </div>
 
@@ -76,7 +76,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Footer */}
-      <div className="max-w-6xl mx-auto px-6 mt-10 flex flex-col md:flex-row items-center justify-between text-sm text-gray-600 border-t pt-6">
+      <div className="max-w-6xl mx-auto px-6 mt-10 flex flex-col md:flex-row items-center justify-between text-sm text-gray-600  pt-6">
         <p>© 2025 DeshIT-BD.ltd</p>
         <div className="flex gap-4">
           <a href="#" className="text-orange-500">
@@ -87,8 +87,8 @@ export default function Footer() {
             Privacy Policy
           </a>
         </div>
-        <a href="#" className="text-orange-500">
-          Download Brochure: English
+        <a href="#" className="text-black inline">
+          Download Brochure: <span className="text-orange-500">English</span>
         </a>
         <p>info@deshit-bd.com</p>
       </div>
